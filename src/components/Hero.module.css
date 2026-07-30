@@ -1,0 +1,54 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  flex-wrap: wrap;
+}
+
+.textBlock {
+  max-width: 420px;
+}
+
+.headline {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  line-height: 1.25;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.subtext {
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.cta {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.cta:hover {
+  opacity: 0.9;
+}
+
+.imagePlaceholder {
+  flex: 1;
+  min-width: 280px;
+  height: 260px;
+  background-color: var(--color-secondary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #DCE6DF;
+  font-size: 0.9rem;
+}
