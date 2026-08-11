@@ -1,0 +1,75 @@
+.hero {
+  position: relative;
+  width: 100%;
+}
+
+.collage {
+  display: flex;
+  height: 420px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.panel {
+  position: relative;
+  flex: 1;
+  transition: flex 0.45s ease;
+  cursor: pointer;
+}
+
+.collage:hover .panel {
+  flex: 1;
+}
+
+.collage .panel:hover {
+  flex: 2.2;
+}
+
+.panel img {
+  transition: transform 0.45s ease;
+}
+
+.panel:hover img {
+  transform: scale(1.05);
+}
+
+.overlayText {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 2;
+  background-color: rgba(245, 237, 224, 0.92);
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  max-width: 360px;
+}
+
+.headline {
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  line-height: 1.25;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+}
+
+.subtext {
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.cta {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.cta:hover {
+  opacity: 0.9;
+}
