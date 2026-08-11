@@ -5,7 +5,7 @@ export type Seller = {
   bio: string;
   rating: number;
   reviewCount: number;
-  products: { name: string; price: string }[];
+  products: { name: string; price: string; image: string }[];
 };
 
 export const sellers: Record<string, Seller> = {
@@ -17,10 +17,10 @@ export const sellers: Record<string, Seller> = {
     rating: 4.8,
     reviewCount: 126,
     products: [
-      { name: "Stoneware bowl", price: "$38" },
-      { name: "Glazed mug set", price: "$46" },
-      { name: "Ceramic vase", price: "$54" },
-      { name: "Trinket dish", price: "$16" },
+      { name: "Stoneware bowl", price: "$38", image: "/images/stoneware-bowl.jpg" },
+      { name: "Glazed mug set", price: "$46", image: "/images/mug-set.jpg" },
+      { name: "Ceramic vase", price: "$54", image: "/images/vase.jpg" },
+      { name: "Trinket dish", price: "$16", image: "/images/trinket-dish.jpg" },
     ],
   },
 };

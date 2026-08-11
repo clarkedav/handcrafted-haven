@@ -22,10 +22,11 @@
   padding: 0.75rem;
 }
 
-.imagePlaceholder {
-  background-color: var(--color-background);
-  border-radius: 6px;
+.imageWrapper {
+  position: relative;
   height: 110px;
+  border-radius: 6px;
+  overflow: hidden;
   margin-bottom: 0.75rem;
 }
 

@@ -37,25 +37,6 @@
   border-color: var(--color-border);
 }
 
-.priceTrack {
-  height: 6px;
-  border-radius: 3px;
-  background-color: #E4DAC7;
-  margin-bottom: 0.6rem;
-  position: relative;
-}
-
-.priceFill {
-  height: 6px;
-  width: 60%;
-  border-radius: 3px;
-  background-color: var(--color-primary);
-}
-
-.priceLabel {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-}
 
 .applyButton {
   width: 100%;
