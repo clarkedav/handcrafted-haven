@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,11 +17,14 @@ export default function ProductListingGrid() {
   const categoryFromUrl = searchParams.get("category") || "all";
 
   const [activeCategory, setActiveCategory] = useState(categoryFromUrl);
-  const [sortOption, setSortOption] = useState("featured");
+  const [prevCategoryFromUrl, setPrevCategoryFromUrl] = useState(categoryFromUrl);
 
-  useEffect(() => {
+  if (categoryFromUrl !== prevCategoryFromUrl) {
+    setPrevCategoryFromUrl(categoryFromUrl);
     setActiveCategory(categoryFromUrl);
-  }, [categoryFromUrl]);
+  }
+
+  const [sortOption, setSortOption] = useState("featured");
 
   const filtered =
     activeCategory === "all"
