@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import CartIcon from "./CartIcon";
+import AuthStatus from "./AuthStatus";
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -16,6 +17,7 @@ export default function Header() {
           <Link href="/sellers/maren">Sellers</Link>
           <a href="#">About</a>
           <CartIcon />
+          <AuthStatus />
         </nav>
       </div>
       <nav className={styles.categoryNav}>
