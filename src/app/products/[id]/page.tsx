@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AddToCartButton from "@/components/AddToCartButton";
 import { products } from "@/lib/products";
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
@@ -28,7 +29,7 @@ export default async function ProductDetailPage({
           <h1 className={styles.name}>{product.name}</h1>
           <p className={styles.price}>{product.price}</p>
           <p className={styles.description}>{product.description}</p>
-          <button className={styles.cta}>Add to cart</button>
+          <AddToCartButton product={product} />
         </div>
       </main>
       <Footer />

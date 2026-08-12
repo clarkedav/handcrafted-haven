@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./CollageHero.module.css";
 
 const panels = [
@@ -14,19 +15,14 @@ export default function CollageHero() {
       <div className={styles.collage}>
         {panels.map((panel) => (
           <div key={panel.src} className={styles.panel}>
-            <Image
-              src={panel.src}
-              alt={panel.alt}
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            <Image src={panel.src} alt={panel.alt} fill style={{ objectFit: "cover" }} />
           </div>
         ))}
       </div>
       <div className={styles.overlayText}>
         <h1 className={styles.headline}>Unique handcrafted treasures, made by hand</h1>
         <p className={styles.subtext}>Support artisans. Shop sustainably.</p>
-        <button className={styles.cta}>Shop now</button>
+        <Link href="/products" className={styles.cta}>Shop now</Link>
       </div>
     </section>
   );

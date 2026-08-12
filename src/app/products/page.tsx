@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductListingGrid from "@/components/ProductListingGrid";
@@ -8,7 +9,9 @@ export default function ProductsPage() {
     <>
       <Header />
       <main className={styles.main}>
-        <ProductListingGrid />
+        <Suspense fallback={<div>Loading products...</div>}>
+          <ProductListingGrid />
+        </Suspense>
       </main>
       <Footer />
     </>
