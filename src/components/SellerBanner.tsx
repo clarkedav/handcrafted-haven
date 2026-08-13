@@ -1,12 +1,13 @@
+"use client";
+
+import { useState } from "react";
 import styles from "./SellerBanner.module.css";
 
-type Seller = {
-  id: number;
-  name: string;
-  email: string;
-};
+type Seller = { id: number; name: string; email: string };
 
 export default function SellerBanner({ seller }: { seller: Seller }) {
+  const [following, setFollowing] = useState(false);
+
   return (
     <div className={styles.banner}>
       <div className={styles.avatar}>{seller.name.charAt(0)}</div>
@@ -14,7 +15,9 @@ export default function SellerBanner({ seller }: { seller: Seller }) {
         <h1 className={styles.name}>{seller.name}</h1>
         <p className={styles.tagline}>Handcrafted Haven seller</p>
         <div className={styles.metaRow}>
-          <button className={styles.followButton}>Follow</button>
+          <button className={styles.followButton} onClick={() => setFollowing(!following)}>
+            {following ? "Following ✓" : "Follow"}
+          </button>
         </div>
       </div>
     </div>

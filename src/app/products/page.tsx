@@ -4,6 +4,11 @@ import Footer from "@/components/Footer";
 import ProductListingGrid from "@/components/ProductListingGrid";
 import styles from "./page.module.css";
 
+export const metadata = {
+  title: "Shop All Products | Handcrafted Haven",
+  description: "Browse handmade pottery, textiles, jewelry, and more from independent artisans.",
+};
+
 export default function ProductsPage() {
   return (
     <>

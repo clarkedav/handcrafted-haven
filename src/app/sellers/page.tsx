@@ -4,6 +4,11 @@ import Footer from "@/components/Footer";
 import { getSellers } from "@/lib/data";
 import styles from "./page.module.css";
 
+export const metadata = {
+  title: "Our Sellers | Handcrafted Haven",
+  description: "Meet the independent artisans selling handmade goods on Handcrafted Haven.",
+};
+
 export default async function SellersPage() {
   const sellers = await getSellers();
 

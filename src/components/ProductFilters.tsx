@@ -26,6 +26,7 @@ export default function ProductFilters({
             key={cat.id}
             className={`${styles.option} ${active === cat.id ? styles.active : ""}`}
             onClick={() => onChange(cat.id)}
+            aria-pressed={active === cat.id}
           >
             {cat.label}
           </button>

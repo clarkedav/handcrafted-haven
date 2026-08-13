@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCart } from "@/context/CartContext";
 import styles from "./page.module.css";
+import { useState } from "react";
 
 export default function CartPage() {
   const { items, removeItem } = useCart();
@@ -13,7 +14,11 @@ export default function CartPage() {
     (sum, item) => sum + parseFloat(item.price.replace("$", "")) * item.quantity,
     0
   );
+const [checkedOut, setCheckedOut] = useState(false);
 
+function handleCheckout() {
+  setCheckedOut(true);
+}
   return (
     <>
       <Header />
@@ -41,6 +46,15 @@ export default function CartPage() {
               ))}
             </div>
             <div className={styles.totalRow}>
+              {!checkedOut ? (
+  <button className={styles.checkoutButton} onClick={handleCheckout}>
+    Proceed to checkout
+  </button>
+) : (
+  <p className={styles.confirmation}>
+    ✓ Order placed! Thank you for supporting handmade artisans.
+  </p>
+)}
               <span>Total</span>
               <span>${total.toFixed(2)}</span>
             </div>
