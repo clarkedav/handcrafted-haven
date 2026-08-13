@@ -11,6 +11,7 @@ export default function SignupPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("buyer");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -22,7 +23,7 @@ export default function SignupPage() {
     const res = await fetch("/api/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ name, email, password, role }),
     });
 
     const data = await res.json();
@@ -75,6 +76,14 @@ export default function SignupPage() {
               required
               minLength={6}
             />
+          </label>
+
+          <label className={styles.label}>
+            I am signing up as a
+            <select className={styles.input} value={role} onChange={(e) => setRole(e.target.value)}>
+              <option value="buyer">Buyer &mdash; I want to shop</option>
+              <option value="seller">Seller &mdash; I want to sell my crafts</option>
+            </select>
           </label>
 
           {error && <p className={styles.error}>{error}</p>}

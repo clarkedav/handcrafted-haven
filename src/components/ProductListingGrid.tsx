@@ -1,30 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { products } from "@/lib/products";
 import ProductFilters from "./ProductFilters";
+import type { Product } from "@/lib/types";
 import styles from "./ProductListingGrid.module.css";
 
 function priceToNumber(price: string) {
-  return parseFloat(price.replace("$", ""));
+  return parseFloat(price);
 }
 
 export default function ProductListingGrid() {
   const searchParams = useSearchParams();
   const categoryFromUrl = searchParams.get("category") || "all";
 
+  const [products, setProducts] = useState<Product[]>([]);
   const [activeCategory, setActiveCategory] = useState(categoryFromUrl);
   const [prevCategoryFromUrl, setPrevCategoryFromUrl] = useState(categoryFromUrl);
+  const [sortOption, setSortOption] = useState("featured");
+
+  useEffect(() => {
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then(setProducts);
+  }, []);
 
   if (categoryFromUrl !== prevCategoryFromUrl) {
     setPrevCategoryFromUrl(categoryFromUrl);
     setActiveCategory(categoryFromUrl);
   }
-
-  const [sortOption, setSortOption] = useState("featured");
 
   const filtered =
     activeCategory === "all"
@@ -32,12 +38,8 @@ export default function ProductListingGrid() {
       : products.filter((p) => p.category === activeCategory);
 
   const sorted = [...filtered].sort((a, b) => {
-    if (sortOption === "low-high") {
-      return priceToNumber(a.price) - priceToNumber(b.price);
-    }
-    if (sortOption === "high-low") {
-      return priceToNumber(b.price) - priceToNumber(a.price);
-    }
+    if (sortOption === "low-high") return priceToNumber(a.price) - priceToNumber(b.price);
+    if (sortOption === "high-low") return priceToNumber(b.price) - priceToNumber(a.price);
     return 0;
   });
 
@@ -59,17 +61,21 @@ export default function ProductListingGrid() {
           </select>
         </div>
 
-        <div className={styles.grid}>
-          {sorted.map((product) => (
-            <Link key={product.id} href={`/products/${product.id}`} className={styles.card}>
-              <div className={styles.imageWrapper}>
-                <Image src={product.image} alt={product.name} fill style={{ objectFit: "cover" }} />
-              </div>
-              <p className={styles.name}>{product.name}</p>
-              <p className={styles.price}>{product.price}</p>
-            </Link>
-          ))}
-        </div>
+        {sorted.length === 0 ? (
+          <p className={styles.empty}>No products found.</p>
+        ) : (
+          <div className={styles.grid}>
+            {sorted.map((product) => (
+              <Link key={product.id} href={`/products/${product.id}`} className={styles.card}>
+                <div className={styles.imageWrapper}>
+                  <Image src={product.image} alt={product.name} fill sizes="200px" style={{ objectFit: "cover" }} />
+                </div>
+                <p className={styles.name}>{product.name}</p>
+                <p className={styles.price}>${product.price}</p>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

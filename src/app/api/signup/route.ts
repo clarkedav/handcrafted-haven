@@ -4,7 +4,7 @@ import { sql } from "@/lib/db";
 
 export async function POST(request: Request) {
   try {
-    const { name, email, password } = await request.json();
+    const { name, email, password, role } = await request.json();
 
     if (!name || !email || !password) {
       return NextResponse.json({ error: "All fields are required." }, { status: 400 });
@@ -16,10 +16,11 @@ export async function POST(request: Request) {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+    const userRole = role === "seller" ? "seller" : "buyer";
 
     await sql`
-      INSERT INTO users (name, email, password)
-      VALUES (${name}, ${email}, ${hashedPassword})
+      INSERT INTO users (name, email, password, role)
+      VALUES (${name}, ${email}, ${hashedPassword}, ${userRole})
     `;
 
     return NextResponse.json({ success: true });

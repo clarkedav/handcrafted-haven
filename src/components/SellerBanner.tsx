@@ -1,5 +1,10 @@
 import styles from "./SellerBanner.module.css";
-import type { Seller } from "@/lib/sellers";
+
+type Seller = {
+  id: number;
+  name: string;
+  email: string;
+};
 
 export default function SellerBanner({ seller }: { seller: Seller }) {
   return (
@@ -7,12 +12,9 @@ export default function SellerBanner({ seller }: { seller: Seller }) {
       <div className={styles.avatar}>{seller.name.charAt(0)}</div>
       <div>
         <h1 className={styles.name}>{seller.name}</h1>
-        <p className={styles.tagline}>{seller.tagline}</p>
+        <p className={styles.tagline}>Handcrafted Haven seller</p>
         <div className={styles.metaRow}>
           <button className={styles.followButton}>Follow</button>
-          <span className={styles.rating}>
-            &#9733; {seller.rating} ({seller.reviewCount} reviews)
-          </span>
         </div>
       </div>
     </div>

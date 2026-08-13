@@ -14,7 +14,7 @@ export default function Header() {
         </Link>
         <nav className={styles.nav}>
           <Link href="/products">Shop</Link>
-          <Link href="/sellers/maren">Sellers</Link>
+          <Link href="/sellers">Sellers</Link>
           <a href="#">About</a>
           <CartIcon />
           <AuthStatus />

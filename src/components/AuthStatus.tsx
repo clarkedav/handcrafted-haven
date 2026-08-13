@@ -12,6 +12,9 @@ export default function AuthStatus() {
   if (session) {
     return (
       <div className={styles.wrapper}>
+        {session.user?.role === "seller" && (
+          <Link href="/dashboard" className={styles.link}>Dashboard</Link>
+        )}
         <span className={styles.name}>Hi, {session.user?.name}</span>
         <button className={styles.link} onClick={() => signOut({ callbackUrl: "/" })}>
           Log out
