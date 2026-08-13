@@ -1,8 +1,61 @@
 .footer {
   background-color: var(--color-text);
   color: var(--color-background);
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.85rem;
+  padding: 2.5rem 3rem 1rem;
   margin-top: 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.brand {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  margin-bottom: 0.35rem;
+}
+
+.tagline {
+  font-size: 0.8rem;
+  color: #C9C3B6;
+}
+
+.colHeading {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.75rem;
+  color: #C9C3B6;
+}
+
+.grid a {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-background);
+  margin-bottom: 0.5rem;
+}
+
+.grid a:hover {
+  color: var(--color-accent);
+}
+
+.contactText {
+  font-size: 0.85rem;
+  color: var(--color-background);
+  margin-bottom: 0.4rem;
+}
+
+.bottom {
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(245, 237, 224, 0.15);
+  text-align: center;
+  font-size: 0.8rem;
+  color: #C9C3B6;
 }

@@ -23,9 +23,9 @@ export async function getSellers() {
   return result;
 }
 
-export async function getSellerWithProducts(id: string): Promise<(Seller & { products: Product[] }) | null> {
-  const sellerResult = await sql`SELECT id, name, email FROM users WHERE id = ${id} AND role = 'seller'`;
-  const seller = sellerResult[0] as Seller | undefined;
+export async function getSellerWithProducts(id: string): Promise<(Seller & { products: Product[]; bio: string | null }) | null> {
+  const sellerResult = await sql`SELECT id, name, email, bio FROM users WHERE id = ${id} AND role = 'seller'`;
+  const seller = sellerResult[0] as (Seller & { bio: string | null }) | undefined;
   if (!seller) return null;
 
   const products = await sql`SELECT * FROM products WHERE seller_id = ${id} ORDER BY created_at DESC`;

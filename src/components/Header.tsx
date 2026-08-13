@@ -15,7 +15,7 @@ export default function Header() {
         <nav className={styles.nav} aria-label="Main navigation">
           <Link href="/products">Shop</Link>
           <Link href="/sellers">Sellers</Link>
-          <a href="#">About</a>
+          <Link href="/about">About</Link>
           <CartIcon />
           <AuthStatus />
         </nav>
